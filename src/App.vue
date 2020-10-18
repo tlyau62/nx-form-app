@@ -42,6 +42,18 @@
       </FormulateInput>
 
       <FormulateInput
+        type="autocomplete"
+        name="customer"
+        label="Search for a customer"
+        :options="[
+          { value: 1, label: 'Jon Doe' },
+          { value: 2, label: 'Jane Roe' },
+          { value: 3, label: 'Bob Foe' },
+          { value: 4, label: 'Ben Cho' },
+        ]"
+      />
+
+      <FormulateInput
         type="group"
         name="students"
         label="Students"
