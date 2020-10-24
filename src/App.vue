@@ -8,7 +8,11 @@
       </b-row>
       <b-row>
         <b-col>
-          <FormulateForm @submit="showAlert" v-model="form">
+          <FormulateForm
+            class="card card-body mb-3 bg-light"
+            @submit="showAlert"
+            v-model="form"
+          >
             <FormulateInput
               type="text"
               name="name"
@@ -130,7 +134,7 @@
           </FormulateForm>
         </b-col>
         <b-col>
-          <vue-json-pretty :data="form"></vue-json-pretty>
+          <!-- <vue-json-pretty :data="form"></vue-json-pretty> -->
         </b-col>
       </b-row>
     </b-container>

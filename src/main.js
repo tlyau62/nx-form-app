@@ -6,6 +6,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueFormulate from '@braid/vue-formulate'
 import MyFormulateAutocomplete from '@/components/MyFormulateAutocomplete'
 import NxTable from 'nx-table';
+import './main.scss';
 
 Vue.component('MyFormulateAutocomplete', MyFormulateAutocomplete)
 
@@ -21,10 +22,45 @@ Vue.use(IconsPlugin)
 Vue.use(VueFormulate, {
   classes: {
     outer: (context, classes) => {
-      return classes.concat([
-        'pl-2'
-      ])
+      // debugger;
+
+      return 'form-group';
     },
+    wrapper: '',
+    label: (context, classes) => {
+      if (context.classification === 'group') {
+        return 'h3';
+      }
+
+      return '';
+    },
+    element: '',
+    input: (context, classes) => {
+      let classNames = [];
+
+      if (context.classification === 'file') {
+        classNames.push('form-control-file');
+      } else if (context.classification === 'button') {
+        if (context.type === 'submit') {
+          classNames.push('btn btn-primary');
+        } else {
+          classNames.push('btn btn-secondary btn-sm');
+        }
+      }
+
+      classNames.push('form-control');
+
+      if (context.hasErrors) {
+        classNames.push('is-invalid');
+      }
+
+      return classNames;
+    },
+    help: 'form-text small',
+    errors: 'pl-0',
+    error: 'invalid-feedback d-block',
+    groupRepeatableRemove: 'btn btn-secondary btn-sm',
+    // grouping: 'pl-2'
   },
   library: {
     autocomplete: {
